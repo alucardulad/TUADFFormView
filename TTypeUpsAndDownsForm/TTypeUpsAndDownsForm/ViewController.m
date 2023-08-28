@@ -36,6 +36,8 @@ NSInteger kStockHeaderType = 0;
     
     self.stockView.frame = CGRectMake(0, 150, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-150);
     [self.view addSubview:self.stockView];
+    
+    
 }
 
 - (void)displayMoreLeftSide: (id)sender{
