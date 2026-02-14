@@ -2,6 +2,7 @@
 
 ![Platform](https://img.shields.io/badge/platform-iOS%2011.0%2B-blue.svg)
 ![Swift](https://img.shields.io/badge/swift-ObjectiveC%20Native-orange.svg)
+![SPM](https://img.shields.io/badge/package-manager-Swift%20Package%20Manager-lightgrey.svg)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 ![Language](https://img.shields.io/badge/language-ObjectiveC-purple.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
@@ -197,7 +198,43 @@
 
 3. 确保项目支持 **iOS 11.0+**
 
-#### 方法二：示例项目
+#### 方法二：Swift Package Manager
+
+在 Xcode 中添加依赖：
+
+1. **方法一：通过 Xcode UI**
+
+   - 打开 Xcode → File → Add Packages
+   - 输入仓库地址：`https://github.com/alucardulad/TUADFFormView.git`
+   - 选择版本：`1.0.0`
+   - 点击 "Add Package"
+
+2. **方法二：通过 Package.swift**
+
+   在你的 `Package.swift` 中添加依赖：
+
+   ```swift
+   dependencies: [
+       .package(
+           url: "https://github.com/alucardulad/TUADFFormView.git",
+           from: "1.0.0"
+       )
+   ]
+   ```
+
+3. **方法三：通过 SPM CLI**
+
+   ```bash
+   swift package add https://github.com/alucardulad/TUADFFormView.git
+   ```
+
+然后在代码中导入使用：
+
+```objc
+#import "TUADFFormView.h"
+```
+
+#### 方法三：示例项目
 
 参考项目中的 `ViewController` 文件：
 ```objc
@@ -859,6 +896,7 @@ TTypeUpsAndDownsForm/
 │   ├── Assets.xcassets                   # 资源文件
 │   └── Base.lproj/                        # Storyboard 资源
 ├── TTypeUpsAndDownsForm.xcodeproj        # Xcode 项目文件
+├── Package.swift                          # Swift Package Manager 配置
 ├── README.md                             # 项目文档
 └── LICENSE                               # 许可证
 ```
@@ -871,6 +909,21 @@ TTypeUpsAndDownsForm/
 | **TUADFFormScrollView** | TUADFFormScrollView.h/.m | 可滚动内容视图，支持左右独立滚动 |
 | **TUADFFormTableViewCell** | TUADFFormTableViewCell.h/.m | 单元格视图，包含固定列 + 左右内容容器 |
 | **ViewController** | ViewController.h/.m | 演示控制器，展示组件使用方式 |
+
+### Swift Package Manager 说明
+
+当使用 SPM 安装时，无需额外依赖，纯 UIKit 实现：
+
+| 依赖库 | 版本 | 用途 |
+|--------|------|------|
+| **Foundation** | 系统自带 | iOS 基础框架 |
+| **UIKit** | 系统自带 | UI 组件库 |
+
+**支持平台：**
+- iOS 11.0+
+- macOS 10.13+
+- tvOS 12.0+
+- watchOS 5.0+
 
 ---
 
@@ -1058,6 +1111,36 @@ TTypeUpsAndDownsForm/
 ## 📄 许可证
 
 本项目采用 [MIT 许可证](LICENSE)。
+
+### SPM 使用方式
+
+通过 Swift Package Manager 使用本项目：
+
+```swift
+import PackageDescription
+
+let package = Package(
+    name: "YourProject",
+    dependencies: [
+        .package(
+            url: "https://github.com/alucardulad/TUADFFormView.git",
+            from: "1.0.0"
+        )
+    ],
+    targets: [
+        .target(
+            name: "YourProject",
+            dependencies: ["TUADFFormView"]
+        )
+    ]
+)
+```
+
+然后在代码中导入使用：
+
+```objc
+#import "TUADFFormView.h"
+```
 
 ```
 MIT License
